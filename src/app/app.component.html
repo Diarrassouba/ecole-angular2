@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="container-fluid">
-        <p-dataTable [value]="dataPersonnes" selectionMode="single" [(selection)]="selectedPersonne" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+        <p-dataTable [value]="dataPersonnes" selectionMode="single" [(selection)]="selectedPersonne" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="5" [responsive]="true">
           <header>CRUD de invtés</header>
           <p-column field="id" header="ID" [sortable]="true"></p-column>
           <p-column field="titre" header="Titre" [sortable]="true"></p-column>
