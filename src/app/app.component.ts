@@ -13,10 +13,10 @@ export class AppComponent implements OnInit {
   title = 'LES INVITES AUTORISEES!';
   dataPersonnes: Personne[];
   displayDialog: boolean;
-  personne:Personne=new Personne;
+  personne:Personne;
   newPersonne: boolean;
   selectedPersonne:Personne;
-  pers:Personne= new  Personne;
+  pers:Personne;
 
 
   constructor(public  personneService: PersonneServiceService) {
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 
   showDialogToAdd(){
     this.newPersonne = true;
-    this.personne = new Personne();
+    this.personne = new Personne('','','','');
     this.displayDialog = true;
   }
 

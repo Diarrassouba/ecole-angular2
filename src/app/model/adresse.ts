@@ -4,20 +4,9 @@ export class Adresse {
   private _email:string;
 
 
-  get quartier(): string {
-    return this._quartier;
-  }
-
-  set quartier(value: string) {
-    this._quartier = value;
-  }
-
-
-  get email(): string {
-    return this._email;
-  }
-
-  set email(value: string) {
-    this._email = value;
+  constructor(quartier: string='', contact: string[]=[], email: string='') {
+    this._quartier = quartier;
+    this._contact = contact;
+    this._email = email;
   }
 }
