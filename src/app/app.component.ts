@@ -1,13 +1,31 @@
 import {Component, OnInit} from '@angular/core';
 import {PersonneServiceService} from "./personne-service.service";
 import {Personne} from "./model/personne";
+import {Car} from "./car/car";
+import {CarService} from "./car/carservice";
+
+class PrimeCar implements  Car{
+  // constructor(public vin?, public year?, public brand?, public color?) {}
+
+  vin: string;
+  year: string;
+  brand: string;
+  color: string;
+
+  constructor(vin: string, year: string, brand: string, color: string) {
+    this.vin = vin;
+    this.year = year;
+    this.brand = brand;
+    this.color = color;
+  }
+}
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers:[PersonneServiceService]
+  providers:[CarService, PersonneServiceService]
 })
 export class AppComponent implements OnInit {
   title = 'LES INVITES AUTORISEES!';
@@ -17,51 +35,63 @@ export class AppComponent implements OnInit {
   newPersonne: boolean;
   selectedPersonne:Personne;
   pers:Personne;
+  car: Car = new PrimeCar('','','','');
+
+  selectedCar: Car;
+
+  newCar: boolean;
+
+  cars: Car[];
 
 
-  constructor(public  personneService: PersonneServiceService) {
-  }
+  constructor(private carService: CarService) {}
 
 
 
   ngOnInit() {
-    this.personneService.gerPersonnes()
-      .subscribe((data) => this.dataPersonnes = data.body);
+    this.carService.getCarsMedium().then(cars => this.cars = cars);
   }
 
 
 
   showDialogToAdd(){
-    this.newPersonne = true;
-    this.personne = new Personne('','','','');
+    this.newCar = true;
+    this.car = new PrimeCar('','','','');
     this.displayDialog = true;
   }
 
   save() {
-    this.personneService.ajouter(this.personne).subscribe((data)=>this.pers=data.json() );
+    if(this.newCar)
+      this.cars.push(this.car);
+    else
+      this.cars[this.findSelectedCarIndex()] = this.car;
+
+    this.car = null;
     this.displayDialog = false;
   }
 
   delete() {
-
+    this.cars.splice(this.findSelectedCarIndex(), 1);
+    this.car = null;
     this.displayDialog = false;
   }
 
   onRowSelect(event) {
-    this.newPersonne = false;
-    this.personne = this.clonePersonne(event.data);
+    this.newCar = false;
+    this.car = this.cloneCar(event.data);
     this.displayDialog = true;
   }
 
-  clonePersonne(p: Personne): Personne {
-    let personne = new Personne();
-    for(let prop in p) {
-      personne[prop] = p[prop];
+  cloneCar(c: Car): Car {
+    let car = new PrimeCar('','','','');
+    for(let prop in c) {
+      car[prop] = c[prop];
     }
-    return personne;
+    return car;
   }
-
-  // findSelectedCarIndex(): number {
-  //   return this.dataPersonnes.indexOf(this.selectedPersonne);
-  // }
+  findSelectedCarIndex(): number {
+    return this.cars.indexOf(this.selectedCar);
+  }
 }
+
+

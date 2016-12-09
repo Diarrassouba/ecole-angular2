@@ -13,6 +13,7 @@ import {DropdownModule} from "primeng/components/dropdown/dropdown";
 import {ButtonModule} from "primeng/components/button/button";
 import {DialogModule} from "primeng/components/dialog/dialog";
 import {PaginatorModule} from "primeng/components/paginator/paginator";
+import 'rxjs/add/operator/toPromise';
 
 @NgModule({
   declarations: [
