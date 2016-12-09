@@ -12,8 +12,7 @@ export class CarService {
 
   getCarsMedium() {
     return this.http.get('app/data/cars-medium.json')
-      .toPromise()
-      .then(res => <Car[]> res.json().data)
-      .then(data => { return data; });
+      .map((res) => res.json());
+
   }
 }
