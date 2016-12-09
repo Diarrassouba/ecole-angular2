@@ -9,12 +9,14 @@ export class Personne  {
 
 
 
-  constructor( titre: string='', nom: string='', prenom: string='', numCni: string='') {
+  constructor( titre: string='', nom: string='', prenom: string='', numCni: string='', adresse:Adresse) {
     this._titre = titre;
     this._nom = nom;
     this._prenom = prenom;
-    this._numCni = numCni
+    this._numCni = numCni;
+    this._adresse=adresse;
   }
+
 
   get adresse(): Adresse {
     return this._adresse;

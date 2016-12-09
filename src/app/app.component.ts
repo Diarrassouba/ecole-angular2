@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PersonneServiceService} from "./personne-service.service";
 import {Personne} from "./model/personne";
+import {NewPersonne} from "./model/newPersonne";
 
 
 @Component({
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit {
   displayDialog: boolean;
   personne:Personne;
   newPersonne: boolean;
+  newPers: NewPersonne;
   selectedPersonne:Personne;
   pers:Personne;
 
@@ -33,12 +35,12 @@ export class AppComponent implements OnInit {
 
   showDialogToAdd(){
     this.newPersonne = true;
-    this.personne = new Personne('','','','');
+    this.newPers = new NewPersonne('','','','','','','');
     this.displayDialog = true;
   }
 
-  save() {
-    this.personneService.ajouter(this.personne).subscribe((data)=>this.pers=data.json() );
+  save(newPers) {
+    this.personneService.ajouter(newPers).subscribe((data)=>this.pers=data.json() );
     this.displayDialog = false;
   }
 
@@ -54,11 +56,11 @@ export class AppComponent implements OnInit {
   }
 
   clonePersonne(p: Personne): Personne {
-    let personne = new Personne();
+    let newPers = new Personne('','','','',null);
     for(let prop in p) {
-      personne[prop] = p[prop];
+      newPers[prop] = p[prop];
     }
-    return personne;
+    return newPers;
   }
 
   // findSelectedCarIndex(): number {
