@@ -12,7 +12,8 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="container-fluid">
         <p-dataTable [value]="dataPersonnes" selectionMode="single" [(selection)]="selectedPersonne"
-                     (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="5" [responsive]="true"
+                     (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="5" [pageLinks]="3"
+                     [rowsPerPageOptions]="[5,10,15]" [responsive]="true"
                      resizableColumns="true">
           <header>CRUD de invtés</header>
           <p-column field="id" header="ID" [sortable]="true"></p-column>
