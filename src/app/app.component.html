@@ -41,7 +41,7 @@
   </div>
 </div>
 
-<!--Boite de dialogue-->
+<!--Boite de dialogue ajout-->
 <p-dialog header="Invtés Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
   <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="newPers">
     <div class="ui-grid-row">
@@ -75,8 +75,50 @@
   </div>
   <footer>
     <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-      <button type="button" pButton icon="fa-close" (click)="delete()" label="Supprimer"></button>
+      <button type="button" pButton icon="fa-close" (click)="annuler()" label="Supprimer"></button>
       <button type="button" pButton icon="fa-check" (click)="save(newPers)" label="Save"></button>
     </div>
   </footer>
 </p-dialog>
+
+// Boite dialog modifier
+<!--Boite de dialogue ajout-->
+<p-dialog header="Invtés Details" [(visible)]="displayDialog2" [responsive]="true" showEffect="fade" [modal]="true">
+  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="personne">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="titre2">Titre</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="titre2" [(ngModel)]="personne.titre"/></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="numcni2">N°CNI</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="numcni2" [(ngModel)]="personne.numCni"/></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="nom2">Nom</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="nom2" [(ngModel)]="personne.nom"/></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="prenom2">Prenom</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="prenom2" [(ngModel)]="personne.prenom"/></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="email2">Email</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="email2" [(ngModel)]="personne.adresse.email"/></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="codePostal2">Code</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="codePostal2" [(ngModel)]="personne.adresse.codePostal"/></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="quartier2">Quartier</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="quartier2" [(ngModel)]="personne.adresse.quartier"/></div>
+    </div>
+  </div>
+  <footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa-close" (click)="delete()" label="Supprimer"></button>
+      <button type="button" pButton icon="fa-check" (click)="modfier(personne)" label="Modifier"></button>
+    </div>
+  </footer>
+</p-dialog>
+

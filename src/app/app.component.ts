@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   title = 'LES INVITES AUTORISEES!';
   dataPersonnes: Personne[];
   displayDialog: boolean;
+  displayDialog2: boolean;
   personne:Personne;
   newPersonne: boolean;
   newPers: NewPersonne;
@@ -46,13 +47,21 @@ export class AppComponent implements OnInit {
 
   delete() {
 
-    this.displayDialog = false;
+    this.displayDialog2 = false;
+  }
+  modfier() {
+
+    this.displayDialog2 = false;
+  }
+  annuler() {
+
+    this.displayDialog2 = false;
   }
 
   onRowSelect(event) {
     this.newPersonne = false;
     this.personne = this.clonePersonne(event.data);
-    this.displayDialog = true;
+    this.displayDialog2 = true;
   }
 
   clonePersonne(p: Personne): Personne {
