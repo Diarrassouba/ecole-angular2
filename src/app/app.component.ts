@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.carService.getCarsMedium()
-      .subscribe((data) => console.log(data.data));
+      .subscribe((data) => this.cars=data.data);
   }
 
 
