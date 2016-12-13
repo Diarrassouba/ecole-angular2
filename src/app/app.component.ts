@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PersonneServiceService} from "./personne-service.service";
 import {Personne} from "./model/personne";
 import {NewPersonne} from "./model/newPersonne";
+import {error} from "util";
 
 
 @Component({
@@ -28,11 +29,19 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
-    this.personneService.gerPersonnes()
-      .subscribe((data) => this.dataPersonnes = data.body);
+    // this.personneService.gerPersonnes()
+    //   .subscribe((data) => this.dataPersonnes = data.body);
+    this.getAllPers();
   }
 
-
+  getAllPers(){
+    this.personneService.gerPersonnes()
+      .subscribe((
+        data) => this.dataPersonnes = data.body,
+        error=> console.log(error),
+        ()=> console.log("getAllPers() bien executé ")
+      );
+  }
 
   showDialogToAdd(){
     this.newPersonne = true;
@@ -41,8 +50,11 @@ export class AppComponent implements OnInit {
   }
 
   save(newPers) {
-    this.personneService.ajouter(newPers).subscribe((data)=>this.pers=data.json() );
+    this.personneService.ajouter(newPers).subscribe((data)=>this.pers=data);
     this.displayDialog = false;
+    // this.personneService.gerPersonnes()
+    //   .subscribe((data) => this.dataPersonnes = data.body);
+    this.getAllPers();
   }
 
   delete() {
