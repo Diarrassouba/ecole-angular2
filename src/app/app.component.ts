@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {PersonneServiceService} from "./personne-service.service";
 import {Personne} from "./model/personne";
 import {NewPersonne} from "./model/newPersonne";
-import {error} from "util";
-import {isNumber} from "util";
 import {ModifPersonne} from "./model/modiPersonne";
 
 
@@ -22,10 +20,9 @@ export class AppComponent implements OnInit {
   newPersonne: boolean;
   suppPersonne: any;
   newPers: NewPersonne;
-  modifPersonne: ModifPersonne;
   selectedPersonne: Personne;
   pers: Personne;
-  persModif: Personne;
+
 
 
   constructor(public  personneService: PersonneServiceService) {
