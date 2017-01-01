@@ -97,7 +97,7 @@ export class AppComponent implements OnInit {
   }
 
   clonePersonne(p: Personne): Personne {
-    let newPers = new Personne('', '', '', '', null);
+    let newPers = new Personne(0, '', '', '','', null);
     for (let prop in p) {
       newPers[prop] = p[prop];
     }

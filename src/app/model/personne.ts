@@ -9,7 +9,8 @@ export class Personne  {
 
 
 
-  constructor( titre: string='', nom: string='', prenom: string='', numCni: string='', adresse:Adresse) {
+  constructor(id:number=0, titre: string='', nom: string='', prenom: string='', numCni: string='', adresse:Adresse) {
+   this._id=id;
     this._titre = titre;
     this._nom = nom;
     this._prenom = prenom;
