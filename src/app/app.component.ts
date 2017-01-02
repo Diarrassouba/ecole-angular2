@@ -9,7 +9,7 @@ import {ModifPersonne} from "./model/modiPersonne";
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [PersonneServiceService]
+  providers: []
 })
 export class AppComponent implements OnInit {
   title = 'LES INVITES AUTORISEES!';
@@ -83,6 +83,7 @@ export class AppComponent implements OnInit {
     )
 
     this.displayDialog2 = false;
+    this.getAllPers();
   }
 
   annuler() {

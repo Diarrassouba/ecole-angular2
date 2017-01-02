@@ -25,7 +25,7 @@ import {PaginatorModule} from "primeng/components/paginator/paginator";
     AlertModule, ButtonsModule, DatepickerModule, DropdownModule, PaginationModule,
     DataTableModule, InputTextModule, AutoCompleteModule, DropdownModule,ButtonModule,DialogModule,PaginatorModule
   ],
-  providers: [],
+  providers: [PersonneServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
