@@ -79,8 +79,7 @@ export class AppComponent implements OnInit {
     this.personneService.modifier(modifPerso).subscribe(
       (data) => this.personne = data.body,
       error => console.log(error),
-      () => console.log("La personne " +idModif + " a été bien modifier")
-    )
+      () => console.log("La personne " +idModif + " a été bien modifier"));
 
     this.displayDialog2 = false;
     this.getAllPers();
@@ -98,7 +97,7 @@ export class AppComponent implements OnInit {
   }
 
   clonePersonne(p: Personne): Personne {
-    let newPers = new Personne(0, '', '', '','', null);
+    let newPers = new Personne(0,'', '', '', '', null);
     for (let prop in p) {
       newPers[prop] = p[prop];
     }
